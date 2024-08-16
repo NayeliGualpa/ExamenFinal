@@ -1,6 +1,7 @@
 import GNDataAccess.GNHormigaDAO;
 import GNDataAccess.GNDTO.GNHormigaDTO;
 import GNUserInterface.GNForm.GNMainForm;
+import GNUserInterface.GNForm.GNSplashForm;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -14,12 +15,11 @@ public class App {
         }
 
 
-      
-   
+        GNSplashForm.show();
         // Llamar al método main de la clase MainWindow para iniciar la aplicación
         GNMainForm.main(args);
 
-    
+   
       
 }
 }

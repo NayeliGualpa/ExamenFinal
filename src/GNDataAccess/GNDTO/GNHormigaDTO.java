@@ -10,8 +10,15 @@ public class GNHormigaDTO {
     private String estado;   
     private String fechaCrea;   
     private String fechaModificacion;
+    private Integer  id;
+    private String   ubicacion;
+    private String   sexo;
+    private Integer  genoAlimentoId;
+    private Integer  ingestaNativaId;
 
-    public GNHormigaDTO(){ }
+
+   
+    public GNHormigaDTO(int idHormiga2, int idSexo2, int idProvincia2, int idGenoAlimento, int idIngestaNativa, String tipoHormiga2, String estado2, String fechaCrea2){ }
 
     public GNHormigaDTO (String tipoHormiga){
         this.tipoHormiga = tipoHormiga;
@@ -30,6 +37,16 @@ public class GNHormigaDTO {
         this.fechaModificacion = fechaModificacion;
     }
 
+    public GNHormigaDTO(int id, String tipoHormiga, String ubicacion, String sexo, int genoAlimentoId, int ingestaNativaId, String estado) {
+        this.id = id;
+        this.tipoHormiga = tipoHormiga;
+        this.ubicacion = ubicacion;
+        this.sexo = sexo;
+        this.genoAlimentoId = genoAlimentoId;
+        this.ingestaNativaId = ingestaNativaId;
+        this.estado = estado;
+    }
+    
      
     public Integer getIdHormiga() {
         return idHormiga;
@@ -103,6 +120,45 @@ public class GNHormigaDTO {
         this.fechaModificacion = fechaModificacion;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public Integer getGenoAlimentoId() {
+        return genoAlimentoId;
+    }
+
+    public void setGenoAlimentoId(Integer genoAlimentoId) {
+        this.genoAlimentoId = genoAlimentoId;
+    }
+
+    public Integer getIngestaNativaId() {
+        return ingestaNativaId;
+    }
+
+    public void setIngestaNativaId(Integer ingestaNativaId) {
+        this.ingestaNativaId = ingestaNativaId;
+    }
     @Override
     public String toString(){
         return getClass().getName()
@@ -116,6 +172,7 @@ public class GNHormigaDTO {
         + "\n  FechaCrea: "         + getFechaCrea()
         + "\n  FechaModificacion: " + getFechaModificacion();
     }
+
    
 }
 

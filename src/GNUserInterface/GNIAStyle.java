@@ -34,7 +34,7 @@ public abstract class GNIAStyle {
 
     public static final URL URL_MAIN  = GNIAStyle.class.getResource("/UserInterface/Resource/Img/IABot.png");
     public static final URL URL_LOGO  = GNIAStyle.class.getResource("/GNUserInterface/GNResource/GNImag/Logo.png");
-    public static final URL URL_SPLASH= GNIAStyle.class.getResource("/UserInterface/Resource/Img/Splah.png");
+    public static final URL URL_SPLASH= GNIAStyle.class.getResource("/GNUserInterface/GNResource/GNImag/Logo.png");
 
     public static final CompoundBorder createBorderRect(){
         return BorderFactory.createCompoundBorder(  new LineBorder(Color.lightGray),

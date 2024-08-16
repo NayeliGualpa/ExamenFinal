@@ -22,7 +22,7 @@ public class GNMainForm {
 
             // Crear y añadir los paneles
             JPanel GNfirstPanel = new GNFirstPanel();
-            JPanel GNotherPanels = new GNOtherPanels();
+            JPanel GNotherPanels = new GNOtherPanels1();
 
             gbc.gridy = 0;
             gbc.weighty = 0.1;

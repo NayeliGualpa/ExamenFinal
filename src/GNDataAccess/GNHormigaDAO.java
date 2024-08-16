@@ -110,41 +110,33 @@ public class GNHormigaDAO  extends GNSqliteDataHelper implements GNIDAO<GNHormig
         }
     }
 
-
     @Override
     public GNHormigaDTO readBy(Integer id) throws Exception {
-        GNHormigaDTO oh = new GNHormigaDTO();
-        String query = " SELECT IdHormiga  "
-                     + ",IdSexo         "
-                     + ",IdProvincia    "
-                     + ",IdAlimento     "
-                     + ",TipoHormiga    "
-                     + ",EstadoHormiga  "
-                     + ",Estado         "
-                     + ",FechaCrea      "
-                     + ",FechaModificacion  "
-                     + "FROM HORMIGA    "
-                     + "WHERE  Estado = 'A'  AND IdVotacion=  " + id.toString(); 
-             
-           try {
-            Connection conn = openConnection();               //conectar a DB
-            Statement stmt = conn.createStatement();          //CRUD : select * ....
-            ResultSet rs = stmt.executeQuery(query);          // ejecutar la
-            while (rs.next()) {
-                GNHormigaDTO h = new GNHormigaDTO( rs.getInt(1)      // IdHormiga
-                ,rs.getInt(2)            // IdSexo
-                ,rs.getInt(3)            // IdProvincia
-                , rs.getInt(4)           // IdAlimento
-                , rs.getString(5)        // TipoHormiga
-                ,rs.getString(6)         // EstadoHormiga
-                ,rs.getString(7)         // Estado
-                ,rs.getString(8)         // FechaCrea
-                ,rs.getString(9));       // FechaModificacion
+        GNHormigaDTO u = null;
+        String query = "SELECT IdHormiga, IdSexo, IdProvincia, IdGenoAlimento, IdIngestaNativa, TipoHormiga, Estado, FechaCrea, FechaModifica " +
+                       "FROM Hormiga " +
+                       "WHERE IdHormiga = ? AND Estado = 'A'";
+        try (Connection conn = openConnection();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+            pstmt.setInt(1, id);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    u = new GNHormigaDTO(
+                        rs.getInt("IdHormiga"),
+                        rs.getInt("IdSexo"),
+                        rs.getInt("IdProvincia"),
+                        rs.getInt("IdGenoAlimento"),
+                        rs.getInt("IdIngestaNativa"),
+                        rs.getString("TipoHormiga"),
+                        rs.getString("Estado"),
+                        rs.getString("FechaCrea")
+                    );
+                }
             }
-           } catch (SQLException e) {
-               throw  new GNLivException (e.getMessage(), getClass().getName() ,"readBy()");
-           }          
-           return oh;
+        } catch (SQLException e) {
+            throw new GNLivException(e.getMessage(), getClass().getName(), "readBy()");
+        }
+        return u;
     }
     }
 
